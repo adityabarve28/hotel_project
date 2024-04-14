@@ -69,8 +69,8 @@ include 'config.php';
 
 </nav>
 <!-- WECOME MESSAGE -->
-<center>
-    <div class="form-group">
+<center>        
+    <div class="form-group">                                    
         <a href="logout.php"><input type="button" class="btn btn-primary form-control" value="Logout"/></a>
     </div>
     <h1 class="wlcmtxt" style="overflow:hidden;">Hello Admin Welcome</h1>

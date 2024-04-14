@@ -351,7 +351,84 @@ else
             //echo $result; ?>
             
         <!--MENU END-->
+        <form action="" method="POST">
+         <div class="menu container-fluid bg-info table-responsive" id="menu" style="padding-top:70px;padding-bottom:70px">
+            
+            <h2 style="overflow-y:hidden;">View your order</h2>
+            <input type="text" name="search" class="form-control" placeholder="Enter Order No Or Name" style="width:50%; float:left;">
+             <button type="submit" class="btn btn-primary" name="goo">view Order</button>
+            <br><br>
+             <table class='table table-dark table-hover'>
+   
+      <tr>
+         <th>Order no</th> 
+        <th>dish</th>
         
+        <th>name</th>
+        <th>Phone</th>
+        <th>Total Amt</th>
+          <th>address</th>
+          <th>Status</th>
+          <th>Direct Order On What's App</th>
+        </tr> 
+                 <?php
+             if(isset($_POST['goo'])){
+    
+                 $srch=$_POST['search'];
+                  $querry11 = "SELECT * FROM orders WHERE ORDERNO = '$srch' OR NAME = '$srch'";
+        $querry22 = mysqli_query($link,$querry11);
+        $i = 0;
+        while($querry33 = mysqli_fetch_assoc($querry22)){
+            $i++;
+             
+            
+            $id = $querry33['ID'];
+            $orderno= $querry33['ORDERNO'];
+            $status= $querry33['STATUS'];
+            $title = $querry33['ORDERS'];
+            $sbtitle = $querry33['NAME'];
+            $content = $querry33['PHONE'];
+            $contentt = $querry33['ADDRESS'];
+            $total = $querry33['TOTAL'];
+?>   
+    
+        
+      
+    
+   
+  
+   
+      <?php
+        echo "           
+  
+   
+            <tr>
+            <td> <h5 style='overflow-y:hidden;'>".$querry33['ORDERNO']."</h5> </td>
+            <td> <h5 style='overflow-y:hidden;'>".$querry33['ORDERS']."</h5> </td>
+            
+            <td><h5 style='overflow-y:hidden;'>".$querry33['NAME']."</h5></td>
+            <td><h5 style='overflow-y:hidden;'>".$querry33['PHONE']." </h5></td>
+            <td><h5 style='overflow-y:hidden;'>".$querry33['TOTAL']." </h5></td>
+             <td><h5 style='overflow-y:hidden;'>".$querry33['ADDRESS']." </h5></td>
+             <td><h5 style='overflow-y:hidden;'>".$querry33['STATUS']." </h5></td>
+             <td> <a href='https://api.whatsapp.com/send?phone=919137818209&text=$title $sbtitle $content $contentt $orderno'>Send This Order On What's App
+            </a></td>
+            
+            </tr>
+             ";
+       
+        }/*}
+                 else{
+                     echo '<script>alert("Enter Correct Order No")</script>';
+                 }*/
+             }
+    ?></table>
+            
+            
+        
+        </div>
+        
+        </form>
          <!--FOOTER-->
     <footer class="page-footer font-small blue pt-4 bg-dark navbar-dark" style="font-family: 'Cormorant Garamond', serif;">
 
